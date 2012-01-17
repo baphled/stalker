@@ -25,6 +25,13 @@ describe Stalker do
       harry.following.count.should eql 1
       harry.following.first.should eql sally
     end
+
+    it "the follow should be set to following the new user" do
+      harry.follow(sally)
+      harry.following.first.followers.count.should eql 1
+      pending 'This seems to be failing though we can access get the expected response via the association'
+      sally.followers.count.should eql 1
+    end
   end
 
   describe "following" do
