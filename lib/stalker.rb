@@ -4,6 +4,10 @@ module Stalker
     def follow(user)
       self.following << user
     end
+
+    def unfollow user
+     self.following.delete(user)
+    end
   end
 
   def self.included(receiver)

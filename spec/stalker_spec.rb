@@ -11,10 +11,10 @@ class User
 end
 
 describe Stalker do
-  describe "follow" do
-    let(:harry) { User.create(username: 'harry') }
-    let(:sally) { User.create(username: 'sally') }
+  let(:harry) { User.create(username: 'harry') }
+  let(:sally) { User.create(username: 'sally') }
 
+  describe "follow" do
     it "lets a user following another user" do
       harry.follow(sally)
       harry.following.count.should eql 1
@@ -28,8 +28,6 @@ describe Stalker do
   end
 
   describe "following" do
-    let(:harry) { User.create(username: 'harry') }
-    let(:sally) { User.create(username: 'sally') }
 
     it "has access to the people the stalker is following" do
       harry.follow(sally)
@@ -44,6 +42,18 @@ describe Stalker do
     it "displays the number of people following the user" do
       harry.follow(sally)
       sally.followers.count.should == 1
+    end
+  end
+
+  describe "unfollow" do
+    it "should remove the followed person from the following list" do
+      harry.unfollow(sally)
+      sally.followers.count.should eql 0
+    end
+
+    it "should remove the users from the stalked followers list" do
+      harry.unfollow(sally)
+      sally.following.count.should eql 0
     end
   end
 end
