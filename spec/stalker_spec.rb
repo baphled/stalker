@@ -28,7 +28,22 @@ describe Stalker do
   end
 
   describe "following" do
-    it "displays the number of people the user is following"
-    it "displays the number of people following the user"
+    let(:harry) { User.create(username: 'harry') }
+    let(:sally) { User.create(username: 'sally') }
+
+    it "has access to the people the stalker is following" do
+      harry.follow(sally)
+      harry.following.should_not be_empty
+    end
+
+    it "displays the number of people the user is following" do
+      harry.follow(sally)
+      harry.following.count.should == 1
+    end
+
+    it "displays the number of people following the user" do
+      harry.follow(sally)
+      sally.followers.count.should == 1
+    end
   end
 end
