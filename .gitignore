@@ -1,6 +1,13 @@
 .bundle/
 log/*.log
 pkg/
+.jhw-cache/
 test/dummy/db/*.sqlite3
 test/dummy/log/*.log
-test/dummy/tmp/
+test/dummy/tmp/.jhw-cache
+Gemfile.lock
+spec/dummy/log/*.log
+.sass-cache/
+spec/dummy/.sass-cache/
+spec/dummy/tmp/
+spec/dummy/log/*.log
