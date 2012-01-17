@@ -1,3 +1,19 @@
 = Stalker
 
+To use the gem simply added the following to your Gemfile
+  gem 'stalker'
+
+The gem is still in alpha so expect the unexpected.
+
+To setup stalking like functionality just add the following to your User model
+  
+  include Stalker
+
+  has_and_belongs_to_many :followers, :autosave => true, :dependent => true, :class_name => 'User', :inverse_of => :following
+  has_and_belongs_to_many :following, :autosave => true, :dependent => true, :class_name => 'User', :inverse_of => :followers
+
+Doing so will make your model a stalker :D
+
+Enjoy
+
 This project rocks and uses MIT-LICENSE.
